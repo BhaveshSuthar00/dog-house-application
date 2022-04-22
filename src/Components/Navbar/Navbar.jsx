@@ -2,7 +2,9 @@ import { Box, Button, Flex, HStack, Spacer, Stack, Text } from '@chakra-ui/react
 import React from 'react'
 import {ColorModeSwitcher} from '../../ColorModeSwitcher'
 import { Link } from 'react-router-dom'
+import {useSelector} from 'react-redux'
 const Navbar = () => {
+    const {loggedIn} = useSelector((store)=> store.login);
   return (
     <Flex justify="space-between"  p={4} border='1px solid black'>
         <Box>
@@ -18,11 +20,15 @@ const Navbar = () => {
                     Home
                 </Button>
             </Link>
-            <Link to='/login'>
+            {
+                !loggedIn ? 
+                <Link to='/login'>
                 <Button mr={3} variant="ghost">
                     Login
                 </Button>
-            </Link>
+                </Link> :
+                null
+            }
         </Box>
     </Flex>
   )
