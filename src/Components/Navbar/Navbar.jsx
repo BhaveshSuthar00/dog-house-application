@@ -27,7 +27,11 @@ const Navbar = () => {
                     Login
                 </Button>
                 </Link> :
-                null
+                <Link to='/listing/create'>
+                    <Button mr={3} variant="ghost">
+                        Add House
+                    </Button>
+                </Link>
             }
         </Box>
     </Flex>
