@@ -1,10 +1,16 @@
-const GETPAT = 'GETPAT';
-const getPat = (data) => ({type : GETPAT, payload : data});
+import axios from "axios";
 
-const apiCallPat = (value) =>{
+const GETDETAILS = 'GETDETAILS';
+const SETLOADING = 'SETLOADING';
+const getData = (data) => ({type : GETDETAILS, payload : data});
+const setLoading = (data) => ({type : SETLOADING, payload : data});
+
+const apiCallData = (id) =>{
     return async function (dispatch){
         try {
-            dispatch(getPat(value))
+            dispatch(setLoading(true))
+            const res = await axios.get(`https://dog-house-server.herokuapp.com/data/${id}`)
+            dispatch(getData(res.data))
         }
         catch (err) {
             console.log(err);
@@ -12,6 +18,7 @@ const apiCallPat = (value) =>{
     }
 }
 export {
-    getPat, GETPAT,
-    apiCallPat
+    getData, GETDETAILS,
+    apiCallData,
+    SETLOADING
 }

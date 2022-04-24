@@ -1,11 +1,14 @@
-import {GETPAT} from './Action'
+import {GETDETAILS, SETLOADING} from './Action'
 const initialState = {
-    patHouse : {}
+    addressDetails : {},
+    loading : false
 }
 export const dataReducer = (store = initialState, {type, payload}) =>{
     switch(type){
-        case GETPAT:
-        return store
+        case SETLOADING : 
+            return {...store, loading : payload}
+        case GETDETAILS:
+        return {...store, addressDetails : payload[0], loading : false}
         default:
             return store
     }

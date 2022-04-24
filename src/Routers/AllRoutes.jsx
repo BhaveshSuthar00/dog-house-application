@@ -1,5 +1,6 @@
 import React from 'react'
 import {Routes, Route} from 'react-router-dom'
+import DetailMain from '../Components/DetalPage/DetailMain'
 import Login from '../Components/Login/Login'
 import Main from '../Components/Main/Main'
 import ListingCreate from '../Components/Page/ListingCreate'
@@ -9,6 +10,7 @@ const AllRoutes = () => {
         <Route path='/' element={<Main />} />
         <Route path='/login' element={<Login />} />
         <Route path='/listing/create' element={<ListingCreate />} />
+        <Route path='/listing/:id' element={<DetailMain />} />
     </Routes>
   )
 }
