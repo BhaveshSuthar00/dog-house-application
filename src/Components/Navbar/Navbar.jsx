@@ -6,7 +6,7 @@ import {useSelector} from 'react-redux'
 const Navbar = () => {
     const {loggedIn} = useSelector((store)=> store.login);
   return (
-    <Flex justify="space-between"  p={4} border='1px solid black'>
+    <Flex justify="space-between"  p={4} boxShadow='lg'>
         <Box>
             <Text>
                 Bog app
@@ -16,19 +16,25 @@ const Navbar = () => {
         <ColorModeSwitcher />
         <Box>
             <Link to='/'>
-                <Button mr={3} variant="ghost">
+                <Button mr={3} variant="ghost"
+                    colorScheme="teal"
+                >
                     Home
                 </Button>
             </Link>
             {
                 !loggedIn ? 
                 <Link to='/login'>
-                <Button mr={3} variant="ghost">
+                <Button mr={3} variant="ghost"
+                    colorScheme="teal"
+                >
                     Login
                 </Button>
                 </Link> :
                 <Link to='/listing/create'>
-                    <Button mr={3} variant="ghost">
+                    <Button mr={3} variant="ghost"
+                        colorScheme="teal"
+                    >
                         Add House
                     </Button>
                 </Link>
