@@ -11,17 +11,16 @@ const DetailMain = () => {
   useEffect(() => {
     dispatch(apiCallData(id))
   }, [])
-  console.log(addressDetails.type)
   if(loading ) {
     return <>loadiing...</>
   }
   return (
     <Container mt={6} maxW="full">
       <Stack fontWeight="500" fontSize="lg"  boxShadow='lg' direction={['column', 'row']} justify="space-evenly" p={4}>
-        <Box>
+        <Box maxW={[ "100%" , "50%"]}>
           <Img src={addressDetails.houseUrl} h="full" w="full"/>
         </Box>
-        <Box align="left">
+        <Box align="left" maxW={["100%", "50%"]}>
           <Text mt={4}>
             Number of Supervisors during the day : {addressDetails.supervisors}
           </Text>

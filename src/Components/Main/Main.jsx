@@ -23,7 +23,7 @@ import Filter from './Filter'
 const Main = () => {
   const dispatch = useDispatch();
   const {address} = useSelector((store)=> store.address)
-  console.log(address)
+  const {auth} = useSelector((store)=> store.login)
   useEffect(()=>{
     dispatch(apiCallAddress())
   }, [])

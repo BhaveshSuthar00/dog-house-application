@@ -5,12 +5,16 @@ import {
     Container,
     Button,
     useToast,
+    InputGroup,
+    InputRightElement,
 } from '@chakra-ui/react'
 import React, {useState, useEffect} from 'react'
 import { apiCallLoggedIn } from '../../Redux/Login/Action'
 import { useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 const Login = () => {
+    const [show, setShow] = React.useState(false)
+    const handleClick = () => setShow(!show)
     const toast = useToast();
     const navigate = useNavigate();
     const {loggedIn, status ,error} = useSelector((store) => store.login);
@@ -60,7 +64,14 @@ const Login = () => {
             
             <FormControl>
                 <FormLabel htmlFor='password'>Password</FormLabel>
-                <Input id='password' type='password'onChange={handleChange}/>
+                <InputGroup>
+                    <Input id='password' type={show ? 'text' : 'password'}  onChange={handleChange}/>
+                    <InputRightElement width='4.5rem'>
+                    <Button h='1.75rem' size='sm' onClick={handleClick}>
+                    {show ? 'Hide' : 'Show'}
+                    </Button>
+                    </InputRightElement>
+                </InputGroup>
             </FormControl>
             <Button mt={4} w='full' type='submit' variant='solid' colorScheme="green">
                 Submit
