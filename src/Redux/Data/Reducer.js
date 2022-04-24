@@ -8,7 +8,7 @@ export const dataReducer = (store = initialState, {type, payload}) =>{
         case SETLOADING : 
             return {...store, loading : payload}
         case GETDETAILS:
-        return {...store, addressDetails : payload[0], loading : false}
+        return {...store, addressDetails : payload, loading : false}
         default:
             return store
     }

@@ -12,6 +12,7 @@ import {
   TableCaption,
   TableContainer,
   Button,
+  Img,
 } from '@chakra-ui/react'
 import React, {useEffect} from 'react'
 import {Link} from 'react-router-dom'
@@ -39,9 +40,10 @@ const Main = () => {
                 <Th>
                   id
                 </Th>
+                <Th>Image</Th>
                 <Th>Name</Th>
                 <Th>City</Th>
-                <Th>Address</Th>
+                <Th maxW="sm">Address</Th>
                 <Th>Capacity</Th>
                 <Th>Cost per day</Th>
                 <Th>verified</Th>
@@ -52,11 +54,14 @@ const Main = () => {
             <Tbody>
               {
                 address.map((item, index)=>{
-                  return <Tr>
+                  return <Tr key={item._id}>
                       <Td>{index+1}</Td>
+                      <Td>
+                        <Img src={item.houseUrl} alt="message" />
+                      </Td>
                       <Td>{item.userId.firstName}</Td>
                       <Td>{item.city}</Td>
-                      <Td>{item.address}</Td>
+                      <Td maxW="sm" overflowX="hidden" _after={"..."}>{item.address}</Td>
                       <Td>{item.capacity}</Td>
                       <Td>{item.costPerDay}</Td>
                       <Td>{
