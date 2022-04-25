@@ -52,7 +52,7 @@ const Login = () => {
             document.getElementById('password').value = null;
             navigate('/login')
         }
-    }, [loggedIn, status, error])
+    }, [loggedIn, status, error, navigate , toast])
     
   return (
     <Container mt={30} boxShadow='xl' p={8}>
@@ -73,7 +73,7 @@ const Login = () => {
                     </InputRightElement>
                 </InputGroup>
             </FormControl>
-            <Button mt={4} w='full' type='submit' variant='solid' colorScheme="green">
+            <Button mt={4} w='full' type='submit' variant='solid' colorScheme="teal">
                 Submit
             </Button>
         </form>

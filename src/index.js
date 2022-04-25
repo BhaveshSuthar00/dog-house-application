@@ -12,11 +12,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <BrowserRouter>
           <ChakraProvider theme={theme}>
-            <App />
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
           </ChakraProvider>
-      </BrowserRouter>
     </Provider>
   </React.StrictMode>
 );

@@ -1,10 +1,11 @@
 import {LOGGED, ERROR ,LOGOUT} from './Action'
-const dataUser = JSON.parse(localStorage.getItem('userData')) || {};
+const dataUser = JSON.parse(localStorage.getItem('userData')) || {
+    token : null
+};
 const initialState = {
-    loggedIn: dataUser.token !== '' ? true : false || false,
+    loggedIn: dataUser.token !== null ? true : false || false,
     loginData : dataUser.user || {},
-    token : dataUser.token || '',
-    status :    dataUser.token !== '' ? true : false  || true,
+    status :  false,
     auth : 'Permission denied',
     error : false
 }
@@ -15,9 +16,9 @@ const initialState = {
 export const loginReducer = (store = initialState, {type, payload})=>{
     switch (type) {
         case LOGOUT : 
-            return {...store, loggedIn: false, loginData : {}, token : "", status : false, auth : 'Permission denied' }
+            return {...store, loggedIn : false, loginData : {}, status : false, auth : 'Permission denied' }
         case LOGGED : 
-        return {...store, status : false,error : false, loginData : payload.user, token : payload.token, auth : payload.authorize, loggedIn : true}
+        return {...store, status : false, error : false, loginData : payload.user, auth : payload.authorize, loggedIn : true}
         case ERROR : 
         return {...store , loggedIn : false, error  : true, status : true}
         default:

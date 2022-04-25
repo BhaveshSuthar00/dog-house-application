@@ -10,7 +10,7 @@ export const addressReducer = (store = initialState, {type , payload})=>{
         case POSTDATA : 
             return {...store, postAddress : payload , loading : false, post : true}
         case GETADDRESS : 
-            return {...store, address : payload}
+            return {...store, address : payload, loading : false}
         case SETLOADING : 
             return {...store, loading : payload}
         default :

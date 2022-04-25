@@ -5,7 +5,6 @@ import {
     FormLabel,
     Input,
     Button,
-    HStack,
     Select,
     useToast
 } from '@chakra-ui/react'
@@ -48,9 +47,9 @@ const Signin = () => {
     }
   return (
     <Container>
-        <Stack>
-            <form onSubmit={handleSubmit}>
-                <HStack>
+        <Stack p={4} boxShadow="lg">
+            <form onSubmit={handleSubmit}> 
+                <Stack mt={5} direction={['column', 'row']}>
                     <FormControl>
                         <FormLabel htmlFor='firstName'>Enter first name</FormLabel>
                         <Input id='firstName' type='text' placeholder='First name' required={true}/>
@@ -59,23 +58,23 @@ const Signin = () => {
                         <FormLabel htmlFor='lastName'>Enter last name</FormLabel>
                         <Input id='lastName' type='text' placeholder='Last name'  required={true}/>
                     </FormControl> 
-                </HStack>
-                <FormControl>
+                </Stack>
+                <FormControl mt={5}>
                     <FormLabel htmlFor='email'>Enter email</FormLabel>
                     <Input id='email' type='email' placeholder='E-mail'  required={true}/>
                 </FormControl> 
-                <FormControl>
+                <FormControl mt={5}>
                     <FormLabel htmlFor='password'>Enter password</FormLabel>
                     <Input id='password' type='password' placeholder='Password'  required={true}/>
                 </FormControl> 
-                <FormControl>
+                <FormControl mt={5}>
                     <FormLabel htmlFor='type'>Category</FormLabel>
                     <Select id='type' placeholder='Select type'  required={true}>
                         <option value='house-holder'>Care-taker</option>
                         <option value='user'>User</option>
                     </Select>
                 </FormControl>
-                <Button type='submit' mt={4}>
+                <Button type='submit' w="full" mt={4} variant='solid' colorScheme="teal" p={4}>
                     Submit
                 </Button>
             </form>

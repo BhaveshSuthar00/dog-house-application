@@ -9,6 +9,7 @@ const getAddress = (data)=>({type : GETADDRESS, payload : data});
 const apiCallAddress = ()=>{
     return async(dispatch)=>{
         try {
+            dispatch(setLoading(true));
             const addressD = await axios.get('https://dog-house-server.herokuapp.com/address/all');
             dispatch(getAddress(addressD.data.Address))
         }
@@ -20,6 +21,7 @@ const apiCallAddress = ()=>{
 const apiCallPrice = (value)=>{
     return async(dispatch)=>{
         try {
+            dispatch(setLoading(true));
             if(value === 'both'){
                 const addressD = await axios.get('https://dog-house-server.herokuapp.com/address/all');
                 dispatch(getAddress(addressD.data.Address))
@@ -37,6 +39,7 @@ const apiCallPrice = (value)=>{
 const apiCallVerified = (value)=>{
     return async(dispatch)=>{
         try {
+            dispatch(setLoading(true));
             if(value === 'both') {
                 const addressD = await axios.get('https://dog-house-server.herokuapp.com/address/all');
                 dispatch(getAddress(addressD.data.Address))

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
 import {useSelector, useDispatch} from 'react-redux'
 import { apiCallLoggedOut } from '../../Redux/Login/Action'
 import { useNavigate } from 'react-router-dom'
+import MobileDrawer from './MobileDrawer'
 const Navbar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -20,18 +21,21 @@ const Navbar = () => {
     rounded='md' 
     backdropFilter='auto' 
     backdropBlur='8px'
-    p={2} 
-    w="full" 
+    p={[0,3]} 
+    w="full"
     position="sticky"
+    fontSize={21}
     >
         <Box>
-            <Text>
+            <Text ml={5} fontWeight="500">
                 Bog app
             </Text>
         </Box>
         <Spacer />
         <ColorModeSwitcher />
-        <Box>
+        <Box
+            display={{base : 'flex',lg : "flex", md : "none", sm : 'none'}}
+        >
             <Link to='/'>
                 <Button mr={3} variant="ghost"
                     colorScheme="teal"
@@ -79,6 +83,11 @@ const Navbar = () => {
                 </Button>
                 </Link> : null
             }
+        </Box>
+        <Box
+            display={{base : 'none',lg : "none", md : "flex", sm : 'flex'}}
+        >
+            <MobileDrawer />
         </Box>
     </Flex>
     )

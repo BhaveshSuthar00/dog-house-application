@@ -22,8 +22,8 @@ const Filter = () => {
             <Box>
                 <Select onChange={handlePrice}>
                     <option value="both">regular</option>
-                    <option value="asc">High to Low</option>
-                    <option value="desc">Low to High</option>
+                    <option value="asc">Low to High</option>
+                    <option value="desc">High to Low</option>
                 </Select>
             </Box>
             <Spacer />

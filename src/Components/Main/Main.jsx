@@ -20,11 +20,11 @@ import { CgDetailsMore } from 'react-icons/cg'
 import Filter from './Filter'
 const Main = () => {
   const dispatch = useDispatch();
-  const {address} = useSelector((store)=> store.address)
+  const {address, loading} = useSelector((store)=> store.address)
   useEffect(()=>{
     dispatch(apiCallAddress())
   }, [dispatch])
-  if(address.length <= 0){
+  if(loading){
     return <Container w="50%" mt={'20%'} align="center">
       <Spinner size='xl' thickness='5px'
       speed='0.65s'
@@ -63,16 +63,16 @@ const Main = () => {
                       </Td>
                       <Td>{item.userId.firstName}</Td>
                       <Td>{item.city}</Td>
-                      <Td maxW="sm" overflowX="hidden" _after={"..."}>{item.address}</Td>
+                      <Td maxW="sm" overflowX="hidden" >{item.address}</Td>
                       <Td>{item.capacity}</Td>
                       <Td>{item.costPerDay}</Td>
                       <Td>{
-                          item.verified === true ? 'Yes' : 'No'
+                          item.verified === true ? 'Verified' : 'Not-verified'
                         }</Td>
                       <Td>{item.rating}</Td>
                       <Td>
                         <Link to={`/listing/${item.userId._id}`}>
-                          <Button rightIcon={<CgDetailsMore />}>
+                          <Button variant="ghost" colorScheme='teal' rightIcon={<CgDetailsMore />}>
                             more
                           </Button>
                         </Link>
