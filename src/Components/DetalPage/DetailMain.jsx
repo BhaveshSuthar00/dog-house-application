@@ -2,7 +2,7 @@ import React, {useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
 import { apiCallData } from '../../Redux/Data/Action'
-import { Box, Container, Flex, HStack, Img, Stack, Text } from '@chakra-ui/react'
+import { Box, Container, HStack, Img, Spinner, Stack, Text } from '@chakra-ui/react'
 import { StarIcon } from '@chakra-ui/icons'
 const DetailMain = () => {
   const {id} = useParams();
@@ -10,9 +10,14 @@ const DetailMain = () => {
   const {addressDetails, loading} = useSelector((store)=> store.details)
   useEffect(() => {
     dispatch(apiCallData(id))
-  }, [])
+  }, [dispatch, id])
   if(loading ) {
-    return <>loadiing...</>
+    return <Container w="50%" mt={'20%'} align="center">
+      <Spinner size='xl' thickness='5px'
+      speed='0.65s'
+      emptyColor='gray.200'
+      color='blue.500'/>
+    </Container>
   }
   return (
     <Container mt={6} maxW="full">

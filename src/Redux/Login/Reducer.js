@@ -1,10 +1,10 @@
 import {LOGGED, ERROR ,LOGOUT} from './Action'
-const dataUser = JSON.parse(localStorage.getItem('userData')) || [];
+const dataUser = JSON.parse(localStorage.getItem('userData')) || {};
 const initialState = {
-    loggedIn: false,
+    loggedIn: dataUser.token !== '' ? true : false || false,
     loginData : dataUser.user || {},
     token : dataUser.token || '',
-    status : true,
+    status :    dataUser.token !== '' ? true : false  || true,
     auth : 'Permission denied',
     error : false
 }

@@ -2,17 +2,15 @@ import {
   Container,
   Stack,
   Table,
-  Text, 
   Thead,
   Tbody,
-  Tfoot,
   Tr,
   Th,
   Td,
-  TableCaption,
   TableContainer,
   Button,
   Img,
+  Spinner,
 } from '@chakra-ui/react'
 import React, {useEffect} from 'react'
 import {Link} from 'react-router-dom'
@@ -23,12 +21,16 @@ import Filter from './Filter'
 const Main = () => {
   const dispatch = useDispatch();
   const {address} = useSelector((store)=> store.address)
-  const {auth} = useSelector((store)=> store.login)
   useEffect(()=>{
     dispatch(apiCallAddress())
-  }, [])
+  }, [dispatch])
   if(address.length <= 0){
-    return <>loading...</>
+    return <Container w="50%" mt={'20%'} align="center">
+      <Spinner size='xl' thickness='5px'
+      speed='0.65s'
+      emptyColor='gray.200'
+      color='blue.500'/>
+    </Container>
   }
   return (
     <Stack p={4} w="100%" >

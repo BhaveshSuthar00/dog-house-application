@@ -2,8 +2,7 @@ import {
     Box,
     Flex, 
     Select,
-    Spacer,
-    Text
+    Spacer
 } from '@chakra-ui/react'
 import React from 'react'
 import { useDispatch} from 'react-redux'

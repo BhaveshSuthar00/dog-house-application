@@ -1,4 +1,4 @@
-import { Box, Button, Flex, HStack, Spacer, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Flex, Spacer, Text } from '@chakra-ui/react'
 import React from 'react'
 import {ColorModeSwitcher} from '../../ColorModeSwitcher'
 import { Link } from 'react-router-dom'
@@ -9,8 +9,6 @@ const Navbar = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const {loggedIn, auth} = useSelector((store)=> store.login);
-    const store = useSelector((store)=> store.login)
-    console.log(store)
     return (
     <Flex  
     top={0}

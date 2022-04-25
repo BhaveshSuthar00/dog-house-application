@@ -14,7 +14,6 @@ import { apiCallPost } from '../../Redux/Data/Action';
 import {useDispatch, useSelector} from 'react-redux'
 const Detail = () => {
     const [petSize, setPet] = useState([])
-    const {postAddress} = useSelector((store)=> store.address)
     const {loginData} = useSelector((store)=> store.login)
     const toast = useToast();
     const navigate = useNavigate();
@@ -23,7 +22,6 @@ const Detail = () => {
         e.preventDefault();
         let typee = document.getElementById('type').value;
         typee =  typee.trim().split(',')
-        console.log(petSize, typee) 
         let obj = {
             summary : document.getElementById('summary').value,
             number : +document.getElementById('number').value,
