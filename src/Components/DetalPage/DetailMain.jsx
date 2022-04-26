@@ -11,12 +11,12 @@ const DetailMain = () => {
   const {id} = useParams();
   const dispatch = useDispatch();
   const {addressDetails, loading} = useSelector((store)=> store.details);
-  const {auth} = useSelector((store)=> store.login);
+  const {auth, loginData} = useSelector((store)=> store.login);
   console.log(addressDetails)
   useEffect(() => {
     dispatch(apiCallData(id))
-  }, [dispatch, id])
-  if(loading ) {
+  }, [])
+  if(loading) {
     return <Container w="50%" mt={'20%'} align="center">
       <Spinner size='xl' thickness='5px'
       speed='0.65s'
@@ -71,9 +71,6 @@ const DetailMain = () => {
           </Text>
           {
             auth === 'Permission granted to add pet' ?
-            // <Button mt={4}>
-            //   Add Pet
-            // </Button> 
             <Box>
               <PetModel /> <Pets />
             </Box>
@@ -81,9 +78,14 @@ const DetailMain = () => {
             null
           }
           {
-            auth === 'Permission granted for add house' || auth === 'Permission granted for all' ?
+            addressDetails.addressId._id === loginData._id 
+            && 
+            auth === 'Permission granted for add house' || auth === 'Permission granted for all' 
+            &&
+            addressDetails.reqPets.length !== 0
+            ?
             <Box>
-              <Reqs idhere={addressDetails._id}/>
+              <Reqs /> <Pets />
             </Box> : null
           }
         </Box>

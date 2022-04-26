@@ -1,6 +1,7 @@
 import {GETDETAILS, SETLOADING, POSTDATA, ACCEPTREQ} from './Action'
+const Details = JSON.parse(localStorage.getItem('Details')) || {};
 const initialState = {
-    addressDetails : {},
+    addressDetails : Details || {},
     loading : false,
     currentData : {},
     acceptedPet : {},

@@ -12,6 +12,7 @@ const apiCallData = (id) =>{
         try {
             dispatch(setLoading(true))
             const res = await axios.get(`https://dog-server-application.herokuapp.com/data/${id}`)
+            localStorage.setItem('Details', JSON.stringify(res.data))
             dispatch(getData(res.data))
 
         }

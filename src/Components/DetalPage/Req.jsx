@@ -16,14 +16,14 @@ import {
 import {useNavigate} from 'react-router-dom'
 import { apiCallUpadate } from '../../Redux/Data/Action'
 import { useSelector, useDispatch } from 'react-redux'
-const Reqs = ({idhere}) => {
+const Reqs = () => {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const { isOpen, onOpen, onClose } = useDisclosure()
     const {addressDetails} = useSelector((store)=> store.details)
     return (
     <>
-    <Button onClick={onOpen} mt={4}>Pets</Button>
+    <Button onClick={onOpen} mt={4} mr={5}>All Request</Button>
         <Modal isOpen={isOpen} onClose={onClose} p={4}>
             <ModalOverlay />
             <ModalContent>
@@ -47,8 +47,9 @@ const Reqs = ({idhere}) => {
                                     Weight : {item.petWeight}
                                 </Text>
                                 <Button onClick={()=>{
-                                    dispatch(apiCallUpadate(idhere,index))
+                                    dispatch(apiCallUpadate(addressDetails._id,index))
                                     onClose();
+                                    navigate(`/`)
                                 }}
                                     mt={10}
                                 >
