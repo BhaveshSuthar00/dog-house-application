@@ -10,7 +10,7 @@ const apiCallAddress = ()=>{
     return async(dispatch)=>{
         try {
             dispatch(setLoading(true));
-            const addressD = await axios.get('https://dog-house-server.herokuapp.com/address/all');
+            const addressD = await axios.get('https://dog-server-application.herokuapp.com/address/all');
             dispatch(getAddress(addressD.data.Address))
         }
         catch (err) {
@@ -23,11 +23,11 @@ const apiCallPrice = (value)=>{
         try {
             dispatch(setLoading(true));
             if(value === 'both'){
-                const addressD = await axios.get('https://dog-house-server.herokuapp.com/address/all');
+                const addressD = await axios.get('https://dog-server-application.herokuapp.com/address/all');
                 dispatch(getAddress(addressD.data.Address))
             }
             else if(value !== 'both'){
-                const price  = await axios.get(`https://dog-house-server.herokuapp.com/address/sort?sortby=${value}`);
+                const price  = await axios.get(`https://dog-server-application.herokuapp.com/address/sort?sortby=${value}`);
                 dispatch(getAddress(price.data.Address))
             }
         }
@@ -41,11 +41,11 @@ const apiCallVerified = (value)=>{
         try {
             dispatch(setLoading(true));
             if(value === 'both') {
-                const addressD = await axios.get('https://dog-house-server.herokuapp.com/address/all');
+                const addressD = await axios.get('https://dog-server-application.herokuapp.com/address/all');
                 dispatch(getAddress(addressD.data.Address))
             }
             else if(value !== 'both'){
-                const price  = await axios.get(`https://dog-house-server.herokuapp.com/address/sort?sortby=${value}`);
+                const price  = await axios.get(`https://dog-server-application.herokuapp.com/address/sort?sortby=${value}`);
                 dispatch(getAddress(price.data.Address))
             }
         }
@@ -58,7 +58,7 @@ const apiCallPost = (data)=>{
     return async (dispatch) =>{
         try {
             dispatch(setLoading(true))
-            const res = await axios.post(`https://dog-house-server.herokuapp.com/address/post`, data)
+            const res = await axios.post(`https://dog-server-application.herokuapp.com/address/post`, data)
             console.log(res.data)
             dispatch(postData(res.data))
         }
