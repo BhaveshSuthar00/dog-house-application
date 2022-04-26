@@ -2,12 +2,16 @@ import React, {useEffect} from 'react'
 import {useParams} from 'react-router-dom'
 import { useSelector,useDispatch } from 'react-redux'
 import { apiCallData } from '../../Redux/Data/Action'
-import { Box, Container, HStack, Img, Spinner, Stack, Text } from '@chakra-ui/react'
+import { Box, Button, Container, HStack, Img, Spinner, Stack, Text } from '@chakra-ui/react'
 import { StarIcon } from '@chakra-ui/icons'
+import {PetModel} from './PetModel'
+import Pets from './Pets'
 const DetailMain = () => {
   const {id} = useParams();
   const dispatch = useDispatch();
-  const {addressDetails, loading} = useSelector((store)=> store.details)
+  const {addressDetails, loading} = useSelector((store)=> store.details);
+  const {auth} = useSelector((store)=> store.login);
+  console.log(addressDetails)
   useEffect(() => {
     dispatch(apiCallData(id))
   }, [dispatch, id])
@@ -64,6 +68,18 @@ const DetailMain = () => {
           <Text mt={4}>
             Summary : {addressDetails.summary}
           </Text>
+          {
+            auth === 'Permission granted to add pet' ?
+            // <Button mt={4}>
+            //   Add Pet
+            // </Button> 
+            <Box>
+              <PetModel /> <Pets />
+            </Box>
+            : 
+            null
+          }
+
         </Box>
       </Stack>
     </Container>

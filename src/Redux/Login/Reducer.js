@@ -6,7 +6,7 @@ const initialState = {
     loggedIn: dataUser.token !== null ? true : false || false,
     loginData : dataUser.user || {},
     status :  false,
-    auth : 'Permission denied',
+    auth : dataUser.authorize || 'Permission denied',
     error : false
 }
 // Permission denied

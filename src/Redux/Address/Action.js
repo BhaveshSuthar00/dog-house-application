@@ -59,7 +59,6 @@ const apiCallPost = (data)=>{
         try {
             dispatch(setLoading(true))
             const res = await axios.post(`https://dog-server-application.herokuapp.com/address/post`, data)
-            console.log(res.data)
             dispatch(postData(res.data))
         }
         catch (err) {

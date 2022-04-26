@@ -10,7 +10,6 @@ const apiCallData = (id) =>{
         try {
             dispatch(setLoading(true))
             const res = await axios.get(`https://dog-server-application.herokuapp.com/data/${id}`)
-            console.log(res)
             dispatch(getData(res.data))
 
         }
@@ -24,7 +23,6 @@ const apiCallPost = (data) =>{
         try {
             dispatch(setLoading(true))
             const res = await axios.post(`https://dog-server-application.herokuapp.com/data/post`, data)
-            console.log(res)
             dispatch(postData(res.data))
         }
         catch (err) {

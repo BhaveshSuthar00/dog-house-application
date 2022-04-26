@@ -5,7 +5,8 @@ const apiCallPet = (data)=>{
     return async (dispatch)=>{
         try {
             const postData = await axios.post("https://dog-server-application.herokuapp.com/pet/post",data);
-            dispatch(uploadPet(postData))
+            console.log(postData.data)
+            dispatch(uploadPet(postData.data.pet))
         }
         catch (err) {
             console.log(err)
