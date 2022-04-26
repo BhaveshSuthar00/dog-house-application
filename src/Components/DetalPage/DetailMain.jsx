@@ -6,6 +6,7 @@ import { Box, Button, Container, HStack, Img, Spinner, Stack, Text } from '@chak
 import { StarIcon } from '@chakra-ui/icons'
 import {PetModel} from './PetModel'
 import Pets from './Pets'
+import Reqs from './Req'
 const DetailMain = () => {
   const {id} = useParams();
   const dispatch = useDispatch();
@@ -79,7 +80,12 @@ const DetailMain = () => {
             : 
             null
           }
-
+          {
+            auth === 'Permission granted for add house' || auth === 'Permission granted for all' ?
+            <Box>
+              <Reqs idhere={addressDetails._id}/>
+            </Box> : null
+          }
         </Box>
       </Stack>
     </Container>
