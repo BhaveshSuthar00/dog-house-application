@@ -23,7 +23,7 @@ const Signin = () => {
             password : document.getElementById('password').value,
             type : document.getElementById('type').value
         }
-        axios.post('https://dog-house-server.herokuapp.com/user/post', obj)
+        axios.post('https://dog-server-application.herokuapp.com/user/post', obj)
         .then((res)=>{
             toast({
                 description : "your new account is created successfully",
