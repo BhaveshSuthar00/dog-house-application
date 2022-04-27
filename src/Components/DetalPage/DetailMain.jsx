@@ -81,8 +81,6 @@ const DetailMain = () => {
             addressDetails.addressId._id === loginData._id 
             && 
             auth === 'Permission granted for add house' || auth === 'Permission granted for all' 
-            &&
-            addressDetails.reqPets.length !== 0
             ?
             <Box>
               <Reqs /> <Pets />
